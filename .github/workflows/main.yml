@@ -1,0 +1,27 @@
+name: Lint and Bash Script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Paso 1: Revisar el código del repositorio
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Paso 2: Instalar ShellCheck para validar el script
+    - name: Install ShellCheck
+      run: sudo apt-get install -y shellcheck
+
+    # Paso 3: Ejecutar ShellCheck para validar el Helloworld.sh
+    - name: Run ShellCheck
+      run: shellcheck Helloworld.sh
+
+    # Paso 4: Ejecutar el script para imprimir el mensaje
+    - name: Run Bash Script
+      run: ./Helloworld.sh
