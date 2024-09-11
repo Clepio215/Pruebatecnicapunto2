@@ -17,10 +17,14 @@ jobs:
     # Paso 2: Instalar ShellCheck para validar el script
     - name: Install ShellCheck
       run: sudo apt-get install -y shellcheck
-
+      
     # Paso 3: Ejecutar ShellCheck para validar el Helloworld.sh
     - name: Run ShellCheck
       run: shellcheck Helloworld.sh
+
+    # Correción Dar permisos de ejecución al script
+    - name: Make Bash script executable
+      run: chmod +x Helloworld.sh
 
     # Paso 4: Ejecutar el script para imprimir el mensaje
     - name: Run Bash Script
